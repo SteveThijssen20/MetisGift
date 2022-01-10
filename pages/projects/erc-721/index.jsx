@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import Link from 'next/link';
 import Head from 'next/head';
 import Row from 'react-bootstrap/Row';
@@ -8,7 +7,7 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 
 import TokenMetadata from '../../../components/TokenMetadata';
-import CreateNFTModal from '../../../components/modals/CreateNFTModal';
+import CreateNFTModal from '../../../components/modals/DonateNFTModal';
 
 import useContract from '../../../services/useContract';
 
@@ -104,13 +103,16 @@ export default function ViewAllNFTs(user) {
 					</div>
 
 					<div style={{ background: "white", marginTop: "10px", height: "1.2px" }}></div>
-					<div style={{ display: "flex", gap: "41px", 'flex-wrap': "wrap", marginTop: "10px" }} >
+					<div style={{ display: "flex", gap: "41px", 'flexWrap': "wrap", marginTop: "10px" }} >
 						{list.map((listItem) => (
-							<div style={{ display: "grid" }}>
-								<a title={listItem.title} href={`erc-721/view/${listItem.tokenId}`}>
-									<img style={{ width: "145px", height: "145px" }} src={listItem.img}></img>
-								</a>
-								<a style={{ color: "yellow" }} href={`erc-721/view/${listItem.tokenId}`}>#{listItem.tokenId}</a>
+							<div key={listItem.id} style={{ display: "grid" }}>
+								<Link href={`/projects/erc-721/view/${listItem.tokenId}`}>
+									<a title={listItem.title} >
+										<img style={{ width: "145px", height: "145px" }} src={listItem.img}></img>
+									</a>
+								</Link>
+								<a style={{ color: "yellow" }} >#{listItem.tokenId}</a>
+
 								<a style={{ color: "white" }} >{listItem.price} ETH</a>
 								<a style={{ color: "grey" }} >{listItem.name}</a>
 							</div>

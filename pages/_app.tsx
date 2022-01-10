@@ -3,6 +3,7 @@ import { Oauth2Client, HttpClient } from '@metis.io/middleware-client';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 
+
 import axios from 'axios';
 
 import Layout from '../components/Layout';
